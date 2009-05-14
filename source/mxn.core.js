@@ -30,6 +30,7 @@ var init = function() {
 	this.images = [];
 	this.loaded = {};
 	this.onload = {};
+	this.element = element;
 	
 	// option defaults
 	this.options = {
