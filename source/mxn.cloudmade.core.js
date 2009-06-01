@@ -61,8 +61,8 @@ mxn.register('cloudmade', {
         addMarker: function(marker, old) {
             var map = this.maps[this.api];
             var pin = marker.toProprietary(this.api);
-
-            // TODO: Add provider code
+    
+            map.addOverlay(pin);
 
             return pin;
         },
@@ -250,6 +250,13 @@ mxn.register('cloudmade', {
 
         toProprietary: function() {
             // TODO: Add provider code
+
+            // // TODO: Add provider code
+            // var myMarkerLatLng = new CM.LatLng(50.136,8.302);
+            // var myMarker = new CM.Marker(myMarkerLatLng, {
+            //  title: this.labelText
+            // });
+            
         },
 
         openBubble: function() {		
