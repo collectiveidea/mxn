@@ -389,32 +389,3 @@ mxn.util.Color.prototype.getHexColor = function() {
 };
 
 })();
-
-
-// Auto-load scripts
-(function() {	
-	// Defaults
-	var providers   = 'google,yahoo,microsoft';
-	var modules     = 'core';
-	var scriptBase;
-	var scripts = document.getElementsByTagName('script');
-
-	for (var i = 0; i < scripts.length; i++) {
-		var match = scripts[i].src.replace(/%20/g , '').match(/^(.*?)mxn\.js(\?\(\[?(.*?)\]?\))?$/);
-		if (match != null) {
-			scriptBase = match[1];
-			if (match[3]) {
-				var settings = match[3].split(',[');
-				providers = settings[0].replace(']' , '');
-				if (settings[1]) modules = settings[1];
-			}
-			break;
-	   }
-	}
-	providers = providers.replace(/ /g, '').split(',');
-	modules = modules.replace(/ /g, '').split(',');
-	for (var i = 0; i < modules.length; i++) {
-		mxn.util.loadScript(scriptBase + 'mxn.' + modules[i] + '.js');
-		for (var j = 0; j < providers.length; j++) mxn.util.loadScript(scriptBase + 'mxn.' + providers[j] + '.' + modules[i] + '.js');
-	}
-})();
